@@ -30,6 +30,7 @@ export default function Navbar() {
           <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
           <a href="#waitlist" className="text-gray-400 hover:text-white transition-colors text-sm">What We Accept</a>
           <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+          <Link href="/partners" className="text-gray-400 hover:text-white transition-colors text-sm">Partners</Link>
         </div>
         
         <a
