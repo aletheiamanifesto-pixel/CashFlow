@@ -51,17 +51,20 @@ export default function Navbar() {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setAssetsOpen(o => !o)}
+              aria-expanded={assetsOpen}
+              aria-haspopup="menu"
               className="flex items-center gap-1 text-gray-400 hover:text-white transition-colors text-sm"
             >
               Assets
               <ChevronDown className={`w-3.5 h-3.5 transition-transform ${assetsOpen ? 'rotate-180' : ''}`} />
             </button>
             {assetsOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-44 bg-[#111] border border-white/10 rounded-xl shadow-xl py-1 z-50">
+              <div role="menu" className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-44 bg-[#111] border border-white/10 rounded-xl shadow-xl py-1 z-50">
                 {ASSET_LINKS.map(({ href, label }) => (
                   <Link
                     key={href}
                     href={href}
+                    role="menuitem"
                     onClick={() => setAssetsOpen(false)}
                     className="block px-4 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
                   >
@@ -89,6 +92,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen(o => !o)}
           className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
           aria-label="Menu"
+          aria-expanded={mobileOpen}
         >
           <div className="w-5 h-0.5 bg-current mb-1 transition-all" />
           <div className="w-5 h-0.5 bg-current mb-1 transition-all" />

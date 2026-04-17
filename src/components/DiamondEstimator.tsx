@@ -29,8 +29,8 @@ export default function DiamondEstimator() {
 
   const basePricePerCarat = DIAMOND_PRICES[color]?.[clarity] ?? 0
   const sizeMult = getDiamondSizeMultiplier(carats)
-  const cutMult = DIAMOND_CUT_MULTIPLIERS[cut]
-  const certMult = DIAMOND_CERT_MULTIPLIERS[cert]
+  const cutMult = DIAMOND_CUT_MULTIPLIERS[cut] ?? 1
+  const certMult = DIAMOND_CERT_MULTIPLIERS[cert] ?? 1
   const marketValue = carats * basePricePerCarat * sizeMult * cutMult * certMult
   const feeAmount = marketValue * STONE_FEE_RATE
   const netPayout = marketValue - feeAmount

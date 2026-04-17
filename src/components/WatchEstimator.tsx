@@ -29,8 +29,8 @@ export default function WatchEstimator() {
   }
 
   const basePrice = WATCH_PRICES[brand]?.[model] ?? 0
-  const condMult = WATCH_CONDITION_MULTIPLIERS[condition]
-  const papersMult = WATCH_PAPERS_MULTIPLIERS[papers]
+  const condMult = WATCH_CONDITION_MULTIPLIERS[condition] ?? 1
+  const papersMult = WATCH_PAPERS_MULTIPLIERS[papers] ?? 1
   const adjustedValue = basePrice * condMult * papersMult
   const feeAmount = adjustedValue * WATCH_FEE_RATE
   const netPayout = adjustedValue - feeAmount
