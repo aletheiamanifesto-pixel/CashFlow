@@ -36,7 +36,8 @@ export async function POST(request: NextRequest) {
     if (!contactName || typeof contactName !== 'string' || contactName.trim().length === 0) {
       return NextResponse.json({ error: 'Contact name is required' }, { status: 400 })
     }
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!email || typeof email !== 'string' || !emailRegex.test(email.trim())) {
       return NextResponse.json({ error: 'Valid email is required' }, { status: 400 })
     }
     if (!city || typeof city !== 'string' || city.trim().length === 0) {

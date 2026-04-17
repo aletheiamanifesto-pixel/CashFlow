@@ -48,7 +48,8 @@ export default function PartnerForm() {
       setErrorMsg('Contact name is required.')
       return
     }
-    if (!form.email.trim() || !form.email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!form.email.trim() || !emailRegex.test(form.email.trim())) {
       setErrorMsg('Please enter a valid email address.')
       return
     }
