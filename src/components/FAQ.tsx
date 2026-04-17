@@ -4,28 +4,28 @@ import { useState } from 'react'
 
 const faqs = [
   {
-    q: 'Is this legal?',
-    a: 'Yes. We are in the process of obtaining a VASP (Virtual Asset Service Provider) license and a precious metals dealer certification in Switzerland. All operations comply with Swiss AML/KYC regulations. Pre-launch operations are conducted under legal counsel.',
+    q: 'How is the price determined?',
+    a: 'Based on live LBMA market rates with a transparent flat fee shown before you confirm. No hidden costs, no surprise deductions.',
   },
   {
-    q: 'How is my gold insured during shipping?',
-    a: 'Every shipment is fully insured up to €50,000 through our logistics partner. Your items are tracked door-to-door with tamper-evident packaging. In the unlikely event of loss or damage, you are fully compensated.',
+    q: 'What do I need to bring?',
+    a: 'Your items and a valid ID. First-time users complete a quick KYC verification, which takes about 2 minutes.',
   },
   {
-    q: 'Which cryptocurrencies can I receive?',
-    a: 'We currently support USDC, USDT, BTC, and ETH. We plan to add more options based on user demand. Stablecoins (USDC/USDT) are recommended for price stability.',
+    q: 'How fast do I get paid?',
+    a: 'Bitcoin via Lightning: seconds. USDC/USDT: under 10 minutes. Bank transfer: same business day.',
   },
   {
-    q: 'How long does the process take?',
-    a: 'From the moment we receive your item, the appraisal takes 24–48 hours. Once confirmed, crypto is released to your wallet within minutes via smart contract. The entire process including shipping typically takes 3–5 business days.',
+    q: 'Is my transaction insured?',
+    a: 'All items are insured from the moment they are appraised at a partner location. You are fully covered throughout the process.',
   },
   {
-    q: 'Can I get my items back?',
-    a: 'Yes! With our upcoming Digital Pawn service (coming soon), you can deposit your item as collateral, receive a crypto loan, and reclaim your item by repaying the loan plus interest.',
+    q: "What's the minimum value?",
+    a: 'We accept items from €100 / CHF 100 upward.',
   },
   {
-    q: 'Is KYC required?',
-    a: 'Yes. For AML compliance and Swiss financial regulations, we require a quick identity verification. The process takes approximately 2 minutes and is powered by a trusted third-party KYC provider.',
+    q: 'How do I become a partner?',
+    a: 'Fill out the form in the Partners section above. We will contact you within 48 hours.',
   },
 ]
 
@@ -33,14 +33,14 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <div className="space-y-3" id="faq">
+    <div className="space-y-2" id="faq">
       {faqs.map((faq, i) => (
         <div
           key={i}
-          className="card-glass rounded-2xl overflow-hidden transition-all"
+          className="bg-[#111] border border-white/10 rounded-xl overflow-hidden transition-all"
         >
           <button
-            className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-[#D4AF37]/5 transition-colors"
+            className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-white/5 transition-colors"
             onClick={() => setOpen(open === i ? null : i)}
           >
             <span className="font-semibold text-base">{faq.q}</span>
@@ -48,7 +48,7 @@ export default function FAQ() {
               +
             </span>
           </button>
-          
+
           {open === i && (
             <div className="px-6 pb-5 animate-fade-in">
               <p className="text-gray-400 leading-relaxed">{faq.a}</p>

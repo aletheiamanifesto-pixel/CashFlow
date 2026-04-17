@@ -1,240 +1,214 @@
 import Navbar from '@/components/Navbar'
-import TrustBadges from '@/components/TrustBadges'
 import HowItWorks from '@/components/HowItWorks'
 import GoldEstimator from '@/components/GoldEstimator'
 import WaitlistForm from '@/components/WaitlistForm'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import PriceWidget from '@/components/PriceWidget'
+import PartnerForm from '@/components/PartnerForm'
+import { Gem, Watch, Coins, BarChart3, Users, DollarSign, Shield, Zap, Building2 } from 'lucide-react'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-16 overflow-hidden">
-        {/* Background effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#1A1A1A] to-[#0A0A0A]" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37] opacity-5 rounded-full blur-[120px]" />
-        
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-[#1A1A1A] border border-[#D4AF37]/30 rounded-full px-4 py-2 mb-8">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            <span className="text-sm text-[#D4AF37]">Pre-launch — Join the waitlist today</span>
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Turn Your <span className="text-gold-gradient">Gold</span> Into{' '}
-            <span className="text-gold-gradient">Crypto</span> in Minutes
+
+      {/* ── 2. Hero ── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#111] to-[#0A0A0A]" />
+
+        <div className="relative z-10 text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
+            Exchange Your Assets<br />for Instant Liquidity
           </h1>
-          
-          <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-            The first insured gold-to-crypto exchange. Ship your gold, get paid in stablecoin.
-            Instant. Transparent. Swiss-based.
+
+          <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Sell gold, watches, and precious stones at your nearest partner location.
+            Get paid in Bitcoin, USDC, or bank transfer — same day.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
             <a
-              href="#waitlist"
-              className="inline-flex items-center justify-center gap-2 gold-gradient text-black font-bold px-8 py-4 rounded-full text-lg hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-[#D4AF37]/20"
+              href="#estimator"
+              className="inline-flex items-center justify-center bg-[#D4AF37] text-black font-bold px-7 py-3.5 rounded-lg text-base hover:bg-[#c9a430] transition-colors"
             >
-              Join the Waitlist
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              Get an Estimate
             </a>
             <a
-              href="#how-it-works"
-              className="inline-flex items-center justify-center gap-2 bg-[#1A1A1A] border border-[#D4AF37]/30 text-[#FAFAFA] font-semibold px-8 py-4 rounded-full text-lg hover:border-[#D4AF37] transition-all"
+              href="#partners"
+              className="inline-flex items-center justify-center bg-transparent border border-white/20 text-white font-semibold px-7 py-3.5 rounded-lg text-base hover:border-white/40 transition-colors"
             >
-              How It Works
+              Become a Partner
             </a>
           </div>
-          
-          <PriceWidget />
+
+          <p className="text-sm text-gray-500">
+            Transparent fees · Real-time pricing · Same-day payout
+          </p>
+
+          <div className="mt-8">
+            <PriceWidget />
+          </div>
         </div>
       </section>
 
-      <TrustBadges />
-
-      {/* How It Works */}
-      <section id="how-it-works" className="py-24 px-4">
+      {/* ── 3. How It Works ── */}
+      <section id="how-it-works" className="py-24 px-4 border-t border-white/5">
         <HowItWorks />
       </section>
 
-      {/* What We Accept */}
-      <section className="py-24 px-4 bg-[#1A1A1A]">
+      {/* ── 4. What We Accept ── */}
+      <section className="py-24 px-4 bg-[#111] border-t border-white/5">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              What We <span className="text-gold-gradient">Accept</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Turn any of these valuables into crypto</p>
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">What We Accept</h2>
+            <p className="text-gray-400 text-lg">Professional appraisal for all major asset categories</p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                icon: '🥇',
+                Icon: BarChart3,
                 title: 'Gold',
-                desc: 'Bars, coins, jewelry. 8kt to 24kt gold accepted.',
-                examples: '24kt bars, 18kt jewelry, gold coins'
+                desc: 'Bars, coins, and jewelry from 8kt to 24kt.',
+                examples: '24kt bars · 18kt jewelry · gold coins',
               },
               {
-                icon: '⌚',
+                Icon: Watch,
                 title: 'Luxury Watches',
-                desc: 'Rolex, Omega, Patek Philippe, Audemars Piguet and more.',
-                examples: 'Rolex, Omega, Patek, AP, IWC'
+                desc: 'Rolex, Omega, Patek Philippe, and other premium brands.',
+                examples: 'Rolex · Omega · Patek · AP · IWC',
               },
               {
-                icon: '💎',
+                Icon: Gem,
                 title: 'Precious Stones',
-                desc: 'Diamonds, sapphires, rubies, emeralds — certified or uncertified.',
-                examples: 'Diamonds, sapphires, rubies'
+                desc: 'Diamonds, sapphires, rubies, emeralds — certified or not.',
+                examples: 'Diamonds · sapphires · rubies',
               },
               {
-                icon: '🪙',
+                Icon: Coins,
                 title: 'Silver & Platinum',
                 desc: 'Silver coins, bars, flatware. Platinum jewelry and ingots.',
-                examples: 'Silver bars, platinum rings'
+                examples: 'Silver bars · platinum rings',
               },
-            ].map((item) => (
-              <div key={item.title} className="card-glass rounded-2xl p-6 hover:border-[#D4AF37]/40 transition-all group">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-[#D4AF37] mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm mb-3">{item.desc}</p>
-                <p className="text-gray-600 text-xs">{item.examples}</p>
+            ].map(({ Icon, title, desc, examples }) => (
+              <div key={title} className="bg-[#0A0A0A] border border-white/10 rounded-xl p-6 hover:border-[#D4AF37]/30 transition-colors">
+                <Icon className="w-6 h-6 text-[#D4AF37] mb-4" />
+                <h3 className="text-lg font-bold mb-2">{title}</h3>
+                <p className="text-gray-400 text-sm mb-3 leading-relaxed">{desc}</p>
+                <p className="text-gray-600 text-xs">{examples}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why CashFlow */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Why <span className="text-gold-gradient">CashFlow</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Everything traditional pawn shops can&apos;t offer</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '⚡',
-                title: 'Instant Payment',
-                desc: 'Crypto in minutes, not bank days. Receive USDC/USDT directly to your wallet as soon as appraisal is complete.'
-              },
-              {
-                icon: '🔒',
-                title: 'Escrow Protection',
-                desc: 'Funds are locked on-chain before you even ship. You see the money is secured before sending anything.'
-              },
-              {
-                icon: '🇨🇭',
-                title: 'Swiss-Based & Insured',
-                desc: 'Headquartered in Lugano, Switzerland. Every shipment insured up to €50,000. Bank-grade security.'
-              },
-              {
-                icon: '📊',
-                title: 'Transparent Pricing',
-                desc: 'Live market rates visible at all times. Spread shown upfront. No hidden fees, ever.'
-              },
-              {
-                icon: '🏛️',
-                title: 'Fully Licensed',
-                desc: 'VASP license + precious metals dealer certification in progress. Operating under Swiss financial law.'
-              },
-              {
-                icon: '📸',
-                title: 'AI-Powered Estimate',
-                desc: 'Get an instant price estimate in 30 seconds just by entering your item details. No appointment needed.'
-              },
-            ].map((item) => (
-              <div key={item.title} className="card-glass rounded-2xl p-6 hover:border-[#D4AF37]/40 transition-all">
-                <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Transparency */}
-      <section className="py-24 px-4 bg-[#1A1A1A]">
+      {/* ── 5. Payout Options ── */}
+      <section className="py-24 px-4 border-t border-white/5">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Transparent <span className="text-gold-gradient">Pricing</span>
-          </h2>
-          <p className="text-gray-400 text-lg mb-12">No surprises. Ever.</p>
-          
-          <div className="card-glass rounded-3xl p-8 md:p-12 mb-8">
-            <p className="text-gray-400 mb-6 text-sm uppercase tracking-widest">Example transaction</p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-8">
-              <div className="text-center">
-                <p className="text-gray-500 text-sm mb-1">Your item</p>
-                <p className="text-xl font-bold">18kt Gold Necklace</p>
-                <p className="text-gray-400">30 grams</p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Payout Options</h2>
+          <p className="text-gray-400 text-lg mb-12">
+            You choose how you get paid. Always at real-time market rates.
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {[
+              { name: 'Bitcoin', sub: 'Lightning', badge: 'Instant' },
+              { name: 'USDC', sub: 'USD Coin', badge: 'Under 10 min' },
+              { name: 'USDT', sub: 'Tether', badge: 'Under 10 min' },
+              { name: 'EURC', sub: 'Euro Coin', badge: 'Under 10 min' },
+              { name: 'Bank Transfer', sub: 'SEPA / SWIFT', badge: 'Same day' },
+            ].map(({ name, sub, badge }) => (
+              <div key={name} className="bg-[#111] border border-white/10 rounded-xl p-4 text-center">
+                <p className="font-bold text-sm mb-0.5">{name}</p>
+                <p className="text-gray-500 text-xs mb-2">{sub}</p>
+                <span className="inline-block bg-[#D4AF37]/10 text-[#D4AF37] text-xs font-medium px-2 py-0.5 rounded-full">
+                  {badge}
+                </span>
               </div>
-              <div className="text-[#D4AF37] text-3xl">→</div>
-              <div className="text-center">
-                <p className="text-gray-500 text-sm mb-1">Market value</p>
-                <p className="text-xl font-bold text-white">€1,800</p>
-              </div>
-              <div className="text-[#D4AF37] text-3xl">→</div>
-              <div className="text-center">
-                <p className="text-gray-500 text-sm mb-1">You receive</p>
-                <p className="text-3xl font-bold text-[#D4AF37]">~1,550 USDC</p>
-              </div>
-            </div>
-            <div className="border-t border-[#D4AF37]/20 pt-6">
-              <p className="text-gray-400">
-                Our fee: <span className="text-white font-semibold">transparent 12–15% spread</span> · No hidden costs · No surprise deductions
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Estimate Widget */}
-      <section className="py-24 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Instant <span className="text-gold-gradient">Estimate</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Find out how much your valuables are worth in crypto</p>
+      {/* ── 6. Estimator ── */}
+      <section id="estimator" className="py-24 px-4 bg-[#111] border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Get an Estimate</h2>
+            <p className="text-gray-400 text-lg">Find out how much your item is worth before you visit a partner</p>
           </div>
           <GoldEstimator />
         </div>
       </section>
 
-      {/* Waitlist Form */}
-      <section id="waitlist" className="py-24 px-4 bg-[#1A1A1A]">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="text-4xl mb-6">🔥</div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Join the <span className="text-gold-gradient">Waitlist</span>
-          </h2>
-          <p className="text-gray-400 text-lg mb-2">Be first to access CashFlow when we launch.</p>
-          <p className="text-[#D4AF37] font-semibold mb-10">🔥 Already 847 people in line</p>
-          <WaitlistForm />
+      {/* ── 7. Partners (B2B) ── */}
+      <section id="partners" className="py-24 px-4 border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Become a CashFlow Collection Point</h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Earn commission on every transaction. We send you new clients, you do what you already do best — appraise.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            {[
+              {
+                Icon: Users,
+                title: 'New Clients',
+                desc: 'We drive customers to your location through our platform and app.',
+              },
+              {
+                Icon: DollarSign,
+                title: '5% Commission',
+                desc: 'Earn on every transaction, paid monthly in crypto or bank transfer.',
+              },
+              {
+                Icon: Shield,
+                title: 'Zero Cost',
+                desc: 'No setup fees, no subscriptions, no risk. Start immediately.',
+              },
+            ].map(({ Icon, title, desc }) => (
+              <div key={title} className="bg-[#111] border border-white/10 rounded-xl p-6">
+                <Icon className="w-6 h-6 text-[#D4AF37] mb-4" />
+                <h3 className="text-lg font-bold mb-2">{title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="max-w-2xl mx-auto bg-[#111] border border-white/10 rounded-2xl p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <Building2 className="w-5 h-5 text-[#D4AF37]" />
+              <h3 className="text-xl font-bold">Apply as Partner</h3>
+            </div>
+            <PartnerForm />
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-24 px-4">
+      {/* ── 8. FAQ ── */}
+      <section className="py-24 px-4 bg-[#111] border-t border-white/5">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Frequently Asked <span className="text-gold-gradient">Questions</span>
-            </h2>
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
           </div>
           <FAQ />
+        </div>
+      </section>
+
+      {/* ── 9. Waitlist ── */}
+      <section id="waitlist" className="py-24 px-4 border-t border-white/5">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Zap className="w-5 h-5 text-[#D4AF37]" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Get Early Access</h2>
+          <p className="text-gray-400 text-lg mb-10">
+            Leave your email — we&apos;ll notify you when CashFlow launches in your area.
+          </p>
+          <WaitlistForm />
         </div>
       </section>
 

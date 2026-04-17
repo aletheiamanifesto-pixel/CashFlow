@@ -15,14 +15,14 @@ export default function WaitlistForm() {
     }
     setErrorMsg('')
     setStatus('loading')
-    
+
     try {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       })
-      
+
       if (res.ok) {
         setStatus('success')
         setEmail('')
@@ -40,9 +40,8 @@ export default function WaitlistForm() {
   if (status === 'success') {
     return (
       <div className="text-center animate-fade-in">
-        <div className="text-6xl mb-4">🎉</div>
-        <h3 className="text-2xl font-bold text-[#D4AF37] mb-2">You&apos;re in!</h3>
-        <p className="text-gray-400">We&apos;ll notify you when CashFlow launches. Keep an eye on your inbox!</p>
+        <h3 className="text-xl font-bold text-[#D4AF37] mb-2">You&apos;re on the list.</h3>
+        <p className="text-gray-400">We&apos;ll notify you when CashFlow launches in your area.</p>
       </div>
     )
   }
@@ -56,12 +55,12 @@ export default function WaitlistForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="your@email.com"
           required
-          className="flex-1 bg-[#0A0A0A] border border-[#D4AF37]/30 text-white rounded-full px-6 py-4 focus:outline-none focus:border-[#D4AF37] transition-colors placeholder-gray-600 text-center sm:text-left"
+          className="flex-1 bg-[#111] border border-white/10 text-white rounded-lg px-5 py-3.5 focus:outline-none focus:border-[#D4AF37] transition-colors placeholder-gray-600"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="gold-gradient text-black font-bold px-8 py-4 rounded-full hover:opacity-90 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="bg-[#D4AF37] text-black font-bold px-7 py-3.5 rounded-lg hover:bg-[#c9a430] transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
         >
           {status === 'loading' ? (
             <span className="flex items-center gap-2">
@@ -69,9 +68,9 @@ export default function WaitlistForm() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
               </svg>
-              Joining...
+              Sending...
             </span>
-          ) : 'Join the Waitlist'}
+          ) : 'Notify Me'}
         </button>
       </div>
       {errorMsg && (
