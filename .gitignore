@@ -2,28 +2,35 @@
 
 # dependencies
 /node_modules
+node_modules/
 /.pnp
 .pnp.js
 .yarn/install-state.gz
 
 # testing
 /coverage
+coverage/
 
 # next.js
 /.next/
 /out/
+.next/
+out/
 
 # production
 /build
+dist/
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
 # local env files
 .env*.local
@@ -38,3 +45,20 @@ next-env.d.ts
 
 # waitlist data (user emails - do not commit)
 data/waitlist.json
+
+# Foundry
+artifacts/
+typechain-types/
+broadcast/
+contracts/lib/
+forge-cache/
+
+# Uploads
+backend/uploads/
+
+# cache
+cache/
+
+# IDE
+.vscode/
+.idea/
