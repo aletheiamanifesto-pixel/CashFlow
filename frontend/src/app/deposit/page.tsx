@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { depositsApi, priceApi } from '@/lib/api'
 import { ASSET_TYPES, SUPPORTED_CURRENCIES } from '@/lib/constants'
@@ -26,6 +26,10 @@ export default function DepositPage() {
     walletAddress: '',
   })
   const [photos, setPhotos] = useState<File[]>([])
+  // Memoized blob URLs per evitare memory leaks — revocati in cleanup
+  const [photoUrls, setPhotoUrls] = useState<string[]>([])
+  const photoUrlsRef = useRef<string[]>([])
+
   const [goldPricePerGram, setGoldPricePerGram] = useState<number | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -38,6 +42,20 @@ export default function DepositPage() {
       setGoldPricePerGram(pricePerGram)
     }).catch(() => {})
   }, [])
+
+  // Crea e gestisce le blob URL per le anteprime foto
+  // Revoca le URL precedenti per prevenire memory leak
+  useEffect(() => {
+    // Revoca le vecchie URL prima di crearne di nuove
+    photoUrlsRef.current.forEach((url) => URL.revokeObjectURL(url))
+    const urls = photos.map((photo) => URL.createObjectURL(photo))
+    photoUrlsRef.current = urls
+    setPhotoUrls(urls)
+
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url))
+    }
+  }, [photos])
 
   const estimatedValue = (): number => {
     if (!goldPricePerGram || !form.estimatedWeight || form.type !== 'gold') return 0
@@ -58,6 +76,7 @@ export default function DepositPage() {
   const removePhoto = (index: number) => {
     setPhotos(prev => prev.filter((_, i) => i !== index))
   }
+
 
   const handleSubmit = async () => {
     setSubmitting(true)
@@ -243,11 +262,11 @@ export default function DepositPage() {
               {/* Preview */}
               {photos.length > 0 && (
                 <div className="grid grid-cols-3 gap-2 mt-3">
-                  {photos.map((photo, index) => (
+                  {photos.map((_photo, index) => (
                     <div key={index} className="relative group">
                       <div className="aspect-square bg-dark-lighter rounded-lg overflow-hidden">
                         <img
-                          src={URL.createObjectURL(photo)}
+                          src={photoUrls[index]}
                           alt={`Foto ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
