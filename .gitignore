@@ -1,0 +1,35 @@
+node_modules/
+.env
+dist/
+out/
+.next/
+cache/
+coverage/
+*.log
+.DS_Store
+*.tsbuildinfo
+
+# Foundry
+artifacts/
+typechain-types/
+broadcast/
+contracts/lib/
+forge-cache/
+
+# Next.js
+.next/
+out/
+
+# Build
+dist/
+
+# Uploads
+backend/uploads/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
