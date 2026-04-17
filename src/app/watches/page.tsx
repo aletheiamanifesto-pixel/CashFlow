@@ -1,0 +1,126 @@
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import WatchEstimator from '@/components/WatchEstimator'
+import { Hash, Settings, ClipboardCheck, ChevronRight } from 'lucide-react'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Sell Your Watch — CashFlow',
+  description: 'Get a transparent estimate for your luxury watch. Expert authentication, instant payout in BTC, USDC, or EUR.',
+}
+
+const BRANDS_GRID = [
+  'Rolex', 'Patek Philippe', 'Audemars Piguet', 'Omega',
+  'Cartier', 'IWC', 'Breitling', 'Tudor',
+  'Vacheron Constantin', 'Jaeger-LeCoultre', 'Panerai', 'Hublot',
+]
+
+export default function WatchesPage() {
+  return (
+    <main className="min-h-screen bg-[#0A0A0A]">
+      <Navbar />
+
+      {/* Hero + Estimator */}
+      <section className="pt-28 pb-16 px-4">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 text-[#D4AF37] text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+            <span>Watches</span>
+            <ChevronRight className="w-3 h-3" />
+            <span>Instant Estimate</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-5 leading-tight tracking-tight">
+            Your Watch. Valued Transparently.<br />Paid Instantly.
+          </h1>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Select your brand and model below. See the estimated market value and your payout.
+          </p>
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          <WatchEstimator />
+        </div>
+      </section>
+
+      {/* Expert Authentication */}
+      <section className="py-20 px-4 bg-[#111] border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Expert Authentication</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Every watch is verified by certified independent watchmakers before payout.
+              Serial number verification, movement inspection, and condition grading are included.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { Icon: Hash, title: 'Serial Number Check', desc: 'Every watch is cross-referenced against manufacturer databases.' },
+              { Icon: Settings, title: 'Movement Inspection', desc: 'Full technical inspection by certified independent watchmakers.' },
+              { Icon: ClipboardCheck, title: 'Condition Grading', desc: 'Professional condition grading with documented photo report.' },
+            ].map(({ Icon, title, desc }) => (
+              <div key={title} className="bg-[#0A0A0A] border border-white/10 rounded-xl p-6">
+                <Icon className="w-6 h-6 text-[#D4AF37] mb-4" />
+                <h3 className="text-base font-bold mb-2">{title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Brands We Accept */}
+      <section className="py-20 px-4 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3">Brands We Accept</h2>
+            <p className="text-gray-400">All major luxury watch manufacturers</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
+            {BRANDS_GRID.map((brand) => (
+              <div
+                key={brand}
+                className="bg-[#111] border border-white/10 rounded-lg px-4 py-3 text-center text-sm font-medium text-gray-300 hover:border-[#D4AF37]/30 transition-colors"
+              >
+                {brand}
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-gray-500 text-sm">
+            Don&apos;t see your brand?{' '}
+            <a href="mailto:hello@cashflow.com" className="text-[#D4AF37] hover:underline">Contact us</a>
+          </p>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="waitlist" className="py-20 px-4 bg-[#111] border-t border-white/5">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Get a Detailed Quote</h2>
+          <p className="text-gray-400 mb-8">Leave your email — we&apos;ll reach out to arrange authentication and a final offer.</p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              className="flex-1 bg-[#0A0A0A] border border-white/10 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors placeholder-gray-600 text-sm"
+            />
+            <Link
+              href="/"
+              className="bg-[#D4AF37] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#c9a430] transition-colors text-sm whitespace-nowrap"
+            >
+              Join Waitlist
+            </Link>
+          </div>
+          <p className="text-gray-600 text-xs mt-4">
+            <Link href="/" className="hover:text-gray-400 transition-colors">← Back to Home</Link>
+            {' · '}
+            <Link href="/gold" className="hover:text-gray-400 transition-colors">Sell Gold</Link>
+            {' · '}
+            <Link href="/stones" className="hover:text-gray-400 transition-colors">Sell Stones</Link>
+          </p>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  )
+}
