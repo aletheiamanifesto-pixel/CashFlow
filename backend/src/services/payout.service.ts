@@ -18,7 +18,7 @@ export const payoutService = {
   ) {
     const deposit = await prisma.deposit.findUnique({
       where: { id: depositId },
-      include: { user: true },
+      include: { user: true, payout: true },
     })
 
     if (!deposit) throw new Error('Deposito non trovato')
