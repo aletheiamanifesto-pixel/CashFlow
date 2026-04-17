@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: cashflow-postgres
+    environment:
+      POSTGRES_USER: cashflow
+      POSTGRES_PASSWORD: cashflow_secret
+      POSTGRES_DB: cashflow_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cashflow -d cashflow_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cashflow-backend
+    environment:
+      DATABASE_URL: postgresql://cashflow:cashflow_secret@postgres:5432/cashflow_db
+      JWT_SECRET: super_secret_jwt_key_change_in_production
+      PORT: 4000
+      NODE_ENV: development
+      POLYGON_RPC_URL: https://polygon-mainnet.g.alchemy.com/v2/your_key
+      ASSET_NFT_ADDRESS: "0x0000000000000000000000000000000000000000"
+      TREASURY_PRIVATE_KEY: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      GOLD_API_KEY: your_gold_api_key
+      SUMSUB_APP_TOKEN: your_sumsub_token
+      SUMSUB_SECRET_KEY: your_sumsub_secret
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - backend_uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cashflow-frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+      NEXT_PUBLIC_CHAIN_ID: "137"
+      NEXT_PUBLIC_ASSET_NFT_ADDRESS: "0x0000000000000000000000000000000000000000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  postgres_data:
+  backend_uploads:
