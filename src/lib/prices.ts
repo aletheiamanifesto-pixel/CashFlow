@@ -132,7 +132,7 @@ export const STONE_FEE_RATE = 0.07
 
 // ─── Shared helpers ──────────────────────────────────────────────────────────
 export function formatEur(value: number): string {
-  return new Intl.NumberFormat('en-EU', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value)
+  return new Intl.NumberFormat('en-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value)
 }
 
 export function formatBtc(value: number): string {

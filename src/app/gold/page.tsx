@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Sell Your Gold — CashFlow',
-  description: 'See exactly what you\'ll get for your gold. Live market price, transparent fee, instant payout in BTC, USDC, or EUR.',
+  description: "See exactly what you'll get for your gold. Live market price, transparent fee, instant payout in BTC, USDC, or EUR.",
 }
 
 export default function GoldPage() {
