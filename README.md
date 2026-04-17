@@ -2,9 +2,11 @@
 
 > **Il primo "Compro Oro" che paga in crypto** — Deposita beni fisici di valore (oro, gioielli, orologi) e ricevi stablecoin USDC/USDT direttamente nel tuo wallet in pochi minuti.
 
+**The first insured gold-to-crypto exchange** — Turn your gold, jewelry, and luxury watches into stablecoins. Swiss-based. Insured. Transparent.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue.svg)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.20-gray.svg)](https://soliditylang.org/)
 [![Polygon](https://img.shields.io/badge/Polygon-Mainnet-purple.svg)](https://polygon.technology/)
 
@@ -25,7 +27,7 @@ CashFlow è una piattaforma che unisce il tradizionale mercato del "compro oro" 
 
 | Layer | Tecnologia |
 |-------|-----------|
-| **Frontend** | Next.js 14 (App Router) + Tailwind CSS + TypeScript |
+| **Frontend** | Next.js 15 (App Router) + Tailwind CSS + TypeScript |
 | **Backend** | Node.js + Express + TypeScript + Prisma ORM |
 | **Database** | PostgreSQL 15 |
 | **Smart Contracts** | Solidity 0.8.20 (Foundry) — ERC-721 |
@@ -39,12 +41,21 @@ CashFlow è una piattaforma che unisce il tradizionale mercato del "compro oro" 
 
 ## 🚀 Quick Start
 
-### Prerequisiti
+### Waitlist Landing Page
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the landing page.
+
+### Full Stack with Docker Compose
+
+#### Prerequisiti
 - Docker + Docker Compose
 - Node.js 20+
 - (Opzionale) Foundry per smart contracts
-
-### Avvio con Docker Compose
 
 ```bash
 # Clona il repository
@@ -71,7 +82,7 @@ Servizi disponibili:
 - **Health Check**: http://localhost:4000/health
 - **Prisma Studio**: `docker-compose exec backend npm run db:studio`
 
-### Sviluppo Locale
+### Sviluppo Locale (Backend)
 
 ```bash
 # Backend
@@ -82,13 +93,41 @@ cp .env.example .env
 npx prisma migrate dev
 npx prisma db seed
 npm run dev  # avvia su porta 4000
-
-# Frontend (in altro terminale)
-cd frontend
-npm install
-cp .env.example .env
-npm run dev  # avvia su porta 3000
 ```
+
+---
+
+## 📁 Struttura Progetto (Landing Page)
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   └── waitlist/
+│   │       └── route.ts      # POST /api/waitlist — saves emails to data/waitlist.json
+│   ├── globals.css
+│   ├── layout.tsx             # SEO metadata, fonts
+│   └── page.tsx               # Main landing page
+├── components/
+│   ├── FAQ.tsx                # Accordion FAQ
+│   ├── Footer.tsx             # Site footer
+│   ├── GoldEstimator.tsx      # Interactive price calculator
+│   ├── HowItWorks.tsx         # 3-step flow
+│   ├── Navbar.tsx             # Sticky navigation
+│   ├── PriceWidget.tsx        # Live gold price (mock)
+│   ├── TrustBadges.tsx        # Trust indicators
+│   └── WaitlistForm.tsx       # Email capture form
+data/
+└── waitlist.json              # Waitlist submissions (MVP storage)
+```
+
+## Waitlist Storage
+
+In development/MVP mode, waitlist submissions are stored in `data/waitlist.json`. For production, integrate with:
+
+- **Formspree**: Set `NEXT_PUBLIC_FORMSPREE_ID` in `.env.local`
+- **EmailOctopus** / **Mailchimp** API
+- **PostgreSQL** via Prisma
 
 ---
 
@@ -183,6 +222,7 @@ Per operare legalmente in Italia sono richiesti:
 ## 🗺️ Roadmap
 
 - [x] **MVP** — Frontend + Backend + Smart Contract base
+- [x] **Waitlist Landing Page** — Next.js 15 landing page with email capture
 - [ ] **v1.1** — Integrazione Sumsub KYC
 - [ ] **v1.2** — Pannello admin completo con gestione perizie
 - [ ] **v1.3** — Mobile app (React Native)
@@ -203,6 +243,8 @@ Per operare legalmente in Italia sono richiesti:
 ## 📝 Licenza
 
 MIT License — vedi [LICENSE](LICENSE) per dettagli.
+
+© 2024 CashFlow Sagl — Lugano, Switzerland. All rights reserved. 💰
 
 ---
 

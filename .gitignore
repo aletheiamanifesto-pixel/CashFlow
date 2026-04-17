@@ -1,13 +1,50 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
 node_modules/
-.env
-dist/
-out/
-.next/
-cache/
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
 coverage/
-*.log
+
+# next.js
+/.next/
+/out/
+.next/
+out/
+
+# production
+/build
+dist/
+
+# misc
 .DS_Store
+Thumbs.db
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
 *.tsbuildinfo
+next-env.d.ts
+
+# waitlist data (user emails - do not commit)
+data/waitlist.json
 
 # Foundry
 artifacts/
@@ -16,20 +53,12 @@ broadcast/
 contracts/lib/
 forge-cache/
 
-# Next.js
-.next/
-out/
-
-# Build
-dist/
-
 # Uploads
 backend/uploads/
+
+# cache
+cache/
 
 # IDE
 .vscode/
 .idea/
-
-# OS
-.DS_Store
-Thumbs.db
