@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
 export default function Navbar() {
@@ -16,14 +17,14 @@ export default function Navbar() {
       scrolled ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#D4AF37]/10' : 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 gold-gradient rounded-lg flex items-center justify-center">
             <span className="text-black font-bold text-sm">CF</span>
           </div>
           <span className="font-bold text-xl">
             Cash<span className="text-[#D4AF37]">Flow</span>
           </span>
-        </a>
+          </Link>
         
         <div className="hidden md:flex items-center gap-8">
           <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
